@@ -1,11 +1,11 @@
-import { getCookie } from "./cookieHelper";
+import { getCookie } from "../helpers/cookieHelper";
 
 const doFetch = async (endpoint, options = {}) => {
     options.credentials = "include";
-    options.headers = {
-        Authorization: getCookie("blog"),
-    };
-    const url = "http://blog-api/" + endpoint;
+    //   options.headers = {
+    //     Authorization: getCookie("blog"),
+    //   };
+    const url = "http://localhost:80/blog-api/" + endpoint;
     let data = null, loading = true, error = null, text = null;
     try {
         const resp = await fetch(url, options);
@@ -21,4 +21,5 @@ const doFetch = async (endpoint, options = {}) => {
     }
     return { data, loading, error, text };
 };
+
 export default doFetch;
